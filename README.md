@@ -1,4 +1,4 @@
-# Legal AI Chat Assistant 🤖⚖️
+# Legal AI Chat Assistant 🤖
 
 An advanced RAG-based intelligent chatbot for legal document analysis, Q&A, summarization, and comparison.
 
@@ -9,7 +9,7 @@ An advanced RAG-based intelligent chatbot for legal document analysis, Q&A, summ
 - **Clause Comparison**: Compare two legal documents and highlight semantic differences
 - **Voice Mode**: Speak your queries and hear responses
 
-## 🛠️ Tech Stack (100% Free & Open Source)
+## 🛠️ Tech Stack 
 
 - **LLM**: Google Flan-T5 (free, runs locally)
 - **RAG Framework**: LangChain
