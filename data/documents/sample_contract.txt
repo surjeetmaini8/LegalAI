@@ -1,0 +1,147 @@
+"""Sample Legal Document 2: Service Agreement Contract"""
+
+SERVICE AGREEMENT
+
+This Service Agreement ("Agreement") is entered into as of January 1, 2024 ("Effective Date"), by and between:
+
+TechCorp Solutions Private Limited, a company incorporated under the Companies Act, 2013, having its registered office at 123 Business Park, Mumbai, Maharashtra 400001 ("Service Provider")
+
+AND
+
+GlobalBiz Enterprises Inc., a company incorporated under the laws of Delaware, USA, having its principal place of business at 456 Commerce Street, New York, NY 10001 ("Client")
+
+(Collectively referred to as the "Parties" and individually as a "Party")
+
+RECITALS
+
+WHEREAS, the Service Provider is engaged in the business of providing software development and IT consulting services;
+
+WHEREAS, the Client desires to engage the Service Provider to provide certain services as described in this Agreement;
+
+NOW, THEREFORE, in consideration of the mutual covenants and agreements contained herein, the Parties agree as follows:
+
+1. SERVICES
+
+1.1 Scope of Services: The Service Provider shall provide software development, maintenance, and technical support services ("Services") as detailed in Schedule A attached hereto.
+
+1.2 Performance Standards: The Service Provider shall perform all Services in a professional and workmanlike manner, consistent with industry standards and best practices.
+
+1.3 Timeline: Services shall be completed according to the milestones specified in Schedule B, subject to reasonable adjustments as mutually agreed by the Parties.
+
+2. TERM AND TERMINATION
+
+2.1 Term: This Agreement shall commence on the Effective Date and continue for a period of twelve (12) months, unless earlier terminated as provided herein ("Initial Term").
+
+2.2 Renewal: Upon expiration of the Initial Term, this Agreement shall automatically renew for successive twelve (12) month periods unless either Party provides written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.
+
+2.3 Termination for Convenience: Either Party may terminate this Agreement for any reason by providing ninety (90) days written notice to the other Party.
+
+2.4 Termination for Cause: Either Party may terminate this Agreement immediately upon written notice if:
+    (a) The other Party commits a material breach of this Agreement and fails to cure such breach within thirty (30) days of receiving written notice;
+    (b) The other Party becomes insolvent, files for bankruptcy, or makes an assignment for the benefit of creditors;
+    (c) The other Party ceases to conduct business in the normal course.
+
+2.5 Effect of Termination: Upon termination, the Client shall pay all fees for Services performed up to the termination date, and the Service Provider shall deliver all work product and Client property.
+
+3. FEES AND PAYMENT
+
+3.1 Service Fees: The Client shall pay the Service Provider fees as set forth in Schedule C ("Service Fees").
+
+3.2 Payment Terms: All invoices shall be paid within thirty (30) days of the invoice date. Late payments shall incur interest at the rate of 1.5% per month or the maximum rate permitted by law, whichever is lower.
+
+3.3 Expenses: The Client shall reimburse the Service Provider for all reasonable and pre-approved out-of-pocket expenses incurred in connection with the Services.
+
+3.4 Taxes: All fees are exclusive of applicable taxes. The Client shall be responsible for all sales, use, VAT, GST, and other taxes, except for taxes based on the Service Provider's income.
+
+4. INTELLECTUAL PROPERTY
+
+4.1 Client Property: All pre-existing intellectual property of the Client shall remain the sole property of the Client.
+
+4.2 Work Product: All deliverables, work product, and intellectual property created by the Service Provider specifically for the Client under this Agreement ("Work Product") shall be the exclusive property of the Client upon full payment of all fees.
+
+4.3 Service Provider Tools: The Service Provider retains all rights to its pre-existing tools, methodologies, and technologies used in providing the Services.
+
+4.4 License Grant: The Service Provider grants the Client a non-exclusive, perpetual, royalty-free license to use any Service Provider Tools incorporated into the Work Product.
+
+5. CONFIDENTIALITY
+
+5.1 Confidential Information: Each Party acknowledges that it may receive confidential and proprietary information of the other Party ("Confidential Information").
+
+5.2 Obligations: Each Party agrees to:
+    (a) Maintain Confidential Information in strict confidence;
+    (b) Use Confidential Information solely for the purpose of performing its obligations under this Agreement;
+    (c) Not disclose Confidential Information to third parties without prior written consent;
+    (d) Protect Confidential Information using the same degree of care as it uses for its own confidential information, but in no event less than reasonable care.
+
+5.3 Exceptions: Confidential Information does not include information that:
+    (a) Is or becomes publicly available through no breach of this Agreement;
+    (b) Was rightfully known prior to disclosure;
+    (c) Is independently developed without use of Confidential Information;
+    (d) Is required to be disclosed by law or court order.
+
+5.4 Duration: The confidentiality obligations shall survive termination of this Agreement for a period of five (5) years.
+
+6. WARRANTIES AND REPRESENTATIONS
+
+6.1 Mutual Warranties: Each Party warrants that:
+    (a) It has the legal authority to enter into this Agreement;
+    (b) This Agreement does not conflict with any other agreement to which it is a party;
+    (c) It shall comply with all applicable laws and regulations.
+
+6.2 Service Provider Warranties: The Service Provider warrants that:
+    (a) Services will be performed in a professional manner consistent with industry standards;
+    (b) Services will not infringe any third-party intellectual property rights;
+    (c) It has the necessary expertise and resources to perform the Services.
+
+6.3 DISCLAIMER: EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE SERVICE PROVIDER MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+7. LIMITATION OF LIABILITY
+
+7.1 Cap on Liability: IN NO EVENT SHALL EITHER PARTY'S TOTAL LIABILITY UNDER THIS AGREEMENT EXCEED THE TOTAL FEES PAID BY THE CLIENT IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
+
+7.2 Exclusion of Damages: IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOSS OF DATA, OR LOSS OF BUSINESS OPPORTUNITIES.
+
+7.3 Exceptions: The limitations in this Section 7 shall not apply to:
+    (a) Breach of confidentiality obligations;
+    (b) Intellectual property infringement;
+    (c) Gross negligence or willful misconduct;
+    (d) Indemnification obligations.
+
+8. INDEMNIFICATION
+
+8.1 By Service Provider: The Service Provider shall indemnify and hold harmless the Client from any claims arising from:
+    (a) Breach of this Agreement by the Service Provider;
+    (b) Negligence or willful misconduct of the Service Provider;
+    (c) Infringement of third-party intellectual property rights by the Services.
+
+8.2 By Client: The Client shall indemnify and hold harmless the Service Provider from any claims arising from:
+    (a) Breach of this Agreement by the Client;
+    (b) Use of Work Product in a manner not authorized by this Agreement;
+    (c) Client's business operations or products.
+
+9. GENERAL PROVISIONS
+
+9.1 Governing Law: This Agreement shall be governed by the laws of Maharashtra, India, without regard to conflict of law principles.
+
+9.2 Dispute Resolution: Any disputes arising under this Agreement shall first be attempted to be resolved through good-faith negotiation. If not resolved within thirty (30) days, disputes shall be submitted to arbitration in Mumbai under the Indian Arbitration and Conciliation Act, 1996.
+
+9.3 Entire Agreement: This Agreement constitutes the entire agreement between the Parties and supersedes all prior agreements and understandings.
+
+9.4 Amendment: This Agreement may only be amended by a written document signed by both Parties.
+
+9.5 Severability: If any provision is found invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+9.6 Force Majeure: Neither Party shall be liable for failure to perform due to causes beyond its reasonable control.
+
+9.7 Assignment: Neither Party may assign this Agreement without the prior written consent of the other Party.
+
+9.8 Notices: All notices shall be in writing and sent to the addresses set forth above or such other address as a Party may designate.
+
+IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
+
+TechCorp Solutions Private Limited         GlobalBiz Enterprises Inc.
+
+By: ___________________________           By: ___________________________
+Name: Rajesh Kumar                        Name: John Smith
+Title: Managing Director                  Title: Chief Executive Officer
+Date: January 1, 2024                     Date: January 1, 2024
