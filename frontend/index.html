@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalAI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="login-container">
+                <div class="login-header">
+                    <div class="login-logo">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h1>LegalAI</h1>
+                    <p>Caseflow Management System</p>
+                </div>
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group remember-me">
+                        <label>
+                            <input type="checkbox" id="remember-me">
+                            <span>Remember me</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <p>Default credentials: admin@justiflow.com / admin123</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Application Layout -->
+        <div id="main-app" class="app-layout hidden">
+            <!-- Mobile Sidebar Overlay -->
+            <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+            
+            <!-- Sidebar -->
+            <aside id="sidebar" class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <span class="sidebar-title">Legal System</span>
+                    <button id="sidebar-close" class="sidebar-close hidden">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" data-page="dashboard" class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" data-page="ai-dashboard" class="nav-item">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Analytics</span>
+                    </a>
+                    <a href="#" data-page="cases" class="nav-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Cases</span>
+                    </a>
+                    <a href="#" data-page="documents" class="nav-item">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Documents</span>
+                    </a>
+                    <a href="#" data-page="hearings" class="nav-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Hearings</span>
+                    </a>
+                    <a href="#" data-page="scheduling" class="nav-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Smart Scheduling</span>
+                    </a>
+                    <a href="#" data-page="priority-scheduling" class="nav-item admin-only">
+                        <i class="fas fa-bolt"></i>
+                        <span>Priority Scheduling</span>
+                    </a>
+                    <a href="#" data-page="reports" class="nav-item admin-only">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                    <a href="#" data-page="users" class="nav-item admin-only">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                    <a href="#" data-page="settings" class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <!-- Top Navigation -->
+                <header class="top-nav">
+                    <div class="top-nav-left">
+                        <button id="menu-toggle" class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search cases..." id="global-search">
+                        </div>
+                    </div>
+                    <div class="top-nav-right">
+                        <!-- Notifications -->
+                        <div class="notification-dropdown">
+                            <button class="nav-icon-btn" id="notification-btn">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge-count">3</span>
+                            </button>
+                            <div class="dropdown-menu hidden" id="notification-menu">
+                                <div class="dropdown-header">
+                                    <h4>Notifications</h4>
+                                    <button class="mark-all-read">Mark all read</button>
+                                </div>
+                                <div class="dropdown-body">
+                                    <div class="notification-item unread">
+                                        <div class="notification-icon">
+                                            <i class="fas fa-gavel"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p>New case assigned: CV/2024/001</p>
+                                            <span class="notification-time">2 min ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification-item unread">
+                                        <div class="notification-icon">
+                                            <i class="fas fa-calendar-check"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p>Hearing scheduled for tomorrow</p>
+                                            <span class="notification-time">1 hour ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification-item">
+                                        <div class="notification-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <p>Case CV/2024/045 marked as resolved</p>
+                                            <span class="notification-time">3 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Profile -->
+                        <div class="user-dropdown">
+                            <button class="user-btn" id="user-btn">
+                                <div class="user-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">Admin User</span>
+                                    <span class="user-role">ADMIN</span>
+                                </div>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu hidden" id="user-menu">
+                                <a href="#" data-page="settings" class="dropdown-item">
+                                    <i class="fas fa-cog"></i>
+                                    <span>Settings</span>
+                                </a>
+                                <button class="dropdown-item" id="logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Page Content -->
+                <main class="page-content">
+                    <!-- Dashboard Page -->
+                    <div id="page-dashboard" class="content-page active">
+                        <div class="page-header">
+                            <h1>Dashboard</h1>
+                            <p>Welcome back! Here's an overview of your cases.</p>
+                        </div>
+                        
+                        <!-- Stats Cards -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon stat-blue">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Total Cases</h3>
+                                    <p class="stat-value">1,234</p>
+                                    <span class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> 12% from last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-green">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Resolved</h3>
+                                    <p class="stat-value">856</p>
+                                    <span class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> 8% from last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-orange">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Pending</h3>
+                                    <p class="stat-value">324</p>
+                                    <span class="stat-change negative">
+                                        <i class="fas fa-arrow-up"></i> 5% from last month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-red">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Urgent</h3>
+                                    <p class="stat-value">54</p>
+                                    <span class="stat-change negative">
+                                        <i class="fas fa-arrow-up"></i> 3% from last month
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <h2>Quick Actions</h2>
+                            <div class="actions-grid">
+                                <button class="action-card" data-page="cases" data-action="new">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>New Case</span>
+                                </button>
+                                <button class="action-card" data-page="documents">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Upload Document</span>
+                                </button>
+                                <button class="action-card" data-page="scheduling">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    <span>Schedule Hearing</span>
+                                </button>
+                                <button class="action-card" data-page="reports">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>View Reports</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Cases Table -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Recent Cases</h3>
+                                <button class="btn btn-outline btn-sm" data-page="cases">View All</button>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Case No.</th>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Filed Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recent-cases-table">
+                                        <tr>
+                                            <td>CV/2024/001</td>
+                                            <td>Smith vs. Johnson</td>
+                                            <td>Civil</td>
+                                            <td><span class="badge badge-primary">Active</span></td>
+                                            <td><span class="badge badge-warning">High</span></td>
+                                            <td>2024-01-15</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CV/2024/002</td>
+                                            <td>Williams vs. Davis</td>
+                                            <td>Civil</td>
+                                            <td><span class="badge badge-success">Resolved</span></td>
+                                            <td><span class="badge badge-secondary">Medium</span></td>
+                                            <td>2024-01-14</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CR/2024/003</td>
+                                            <td>State vs. Brown</td>
+                                            <td>Criminal</td>
+                                            <td><span class="badge badge-primary">Active</span></td>
+                                            <td><span class="badge badge-danger">Critical</span></td>
+                                            <td>2024-01-13</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Dashboard Page -->
+                    <div id="page-ai-dashboard" class="content-page">
+                        <div class="page-header">
+                            <h1>AI Analytics Dashboard</h1>
+                            <p>Powered by advanced machine learning models for case predictions.</p>
+                        </div>
+
+                        <!-- AI Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon stat-purple">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>AI Predictions</h3>
+                                    <p class="stat-value">89%</p>
+                                    <span class="stat-change positive">Accuracy</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-indigo">
+                                    <i class="fas fa-crystal-ball"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Cases Analyzed</h3>
+                                    <p class="stat-value">2,456</p>
+                                    <span class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> 15% this week
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-teal">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Recommendations</h3>
+                                    <p class="stat-value">156</p>
+                                    <span class="stat-change">Pending review</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-pink">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Automation Rate</h3>
+                                    <p class="stat-value">67%</p>
+                                    <span class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> 5% improvement
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Features Grid -->
+                        <div class="ai-features-grid">
+                            <div class="ai-feature-card">
+                                <div class="feature-header">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h3>Case Outcome Prediction</h3>
+                                </div>
+                                <p>Predict case outcomes based on historical data and similar cases.</p>
+                                <button class="btn btn-primary">Try Prediction</button>
+                            </div>
+                            <div class="ai-feature-card">
+                                <div class="feature-header">
+                                    <i class="fas fa-clock"></i>
+                                    <h3>Duration Estimation</h3>
+                                </div>
+                                <p>Estimate case duration based on complexity and type.</p>
+                                <button class="btn btn-primary">Estimate Now</button>
+                            </div>
+                            <div class="ai-feature-card">
+                                <div class="feature-header">
+                                    <i class="fas fa-balance-scale"></i>
+                                    <h3>Similar Cases Search</h3>
+                                </div>
+                                <p>Find similar cases for reference and precedent.</p>
+                                <button class="btn btn-primary">Search Cases</button>
+                            </div>
+                            <div class="ai-feature-card">
+                                <div class="feature-header">
+                                    <i class="fas fa-users"></i>
+                                    <h3>Judge Workload Analysis</h3>
+                                </div>
+                                <p>Analyze judge workload distribution and optimize assignments.</p>
+                                <button class="btn btn-primary">View Analysis</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cases Page -->
+                    <div id="page-cases" class="content-page">
+                        <div class="page-header">
+                            <div class="page-header-content">
+                                <h1>Cases</h1>
+                                <p>Manage and track all your cases.</p>
+                            </div>
+                            <button class="btn btn-primary" id="new-case-btn">
+                                <i class="fas fa-plus"></i> New Case
+                            </button>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label>Search</label>
+                                        <input type="text" class="form-input" placeholder="Search cases..." id="case-search">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label>Status</label>
+                                        <select class="form-select" id="case-status-filter">
+                                            <option value="">All Status</option>
+                                            <option value="ACTIVE">Active</option>
+                                            <option value="PENDING">Pending</option>
+                                            <option value="RESOLVED">Resolved</option>
+                                            <option value="CLOSED">Closed</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label>Type</label>
+                                        <select class="form-select" id="case-type-filter">
+                                            <option value="">All Types</option>
+                                            <option value="CIVIL">Civil</option>
+                                            <option value="CRIMINAL">Criminal</option>
+                                            <option value="FAMILY">Family</option>
+                                            <option value="CORPORATE">Corporate</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label>Priority</label>
+                                        <select class="form-select" id="case-priority-filter">
+                                            <option value="">All Priorities</option>
+                                            <option value="CRITICAL">Critical</option>
+                                            <option value="HIGH">High</option>
+                                            <option value="MEDIUM">Medium</option>
+                                            <option value="LOW">Low</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-outline" id="apply-filters">
+                                        <i class="fas fa-filter"></i> Apply
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cases Table -->
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Case No.</th>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Filed Date</th>
+                                            <th>Assigned To</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cases-table">
+                                        <tr>
+                                            <td>CV/2024/001</td>
+                                            <td>Smith vs. Johnson</td>
+                                            <td>Civil</td>
+                                            <td><span class="badge badge-primary">Active</span></td>
+                                            <td><span class="badge badge-warning">High</span></td>
+                                            <td>2024-01-15</td>
+                                            <td>Judge Williams</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CV/2024/002</td>
+                                            <td>Williams vs. Davis</td>
+                                            <td>Civil</td>
+                                            <td><span class="badge badge-success">Resolved</span></td>
+                                            <td><span class="badge badge-secondary">Medium</span></td>
+                                            <td>2024-01-14</td>
+                                            <td>Judge Brown</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CR/2024/003</td>
+                                            <td>State vs. Brown</td>
+                                            <td>Criminal</td>
+                                            <td><span class="badge badge-primary">Active</span></td>
+                                            <td><span class="badge badge-danger">Critical</span></td>
+                                            <td>2024-01-13</td>
+                                            <td>Judge Miller</td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documents Page -->
+                    <div id="page-documents" class="content-page">
+                        <div class="page-header">
+                            <div class="page-header-content">
+                                <h1>Documents</h1>
+                                <p>Manage case documents and files.</p>
+                            </div>
+                            <button class="btn btn-primary" id="upload-doc-btn">
+                                <i class="fas fa-upload"></i> Upload Document
+                            </button>
+                        </div>
+
+                        <!-- Document Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon stat-blue">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Total Documents</h3>
+                                    <p class="stat-value">3,456</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-green">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Verified</h3>
+                                    <p class="stat-value">2,890</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-orange">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Pending Review</h3>
+                                    <p class="stat-value">456</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-purple">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Storage Used</h3>
+                                    <p class="stat-value">2.4 GB</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents Table -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Recent Documents</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Document Name</th>
+                                            <th>Case No.</th>
+                                            <th>Type</th>
+                                            <th>Size</th>
+                                            <th>Uploaded</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="documents-table">
+                                        <tr>
+                                            <td><i class="fas fa-file-pdf text-danger"></i> complaint.pdf</td>
+                                            <td>CV/2024/001</td>
+                                            <td>Complaint</td>
+                                            <td>2.4 MB</td>
+                                            <td>2024-01-15</td>
+                                            <td><span class="badge badge-success">Verified</span></td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-file-word text-primary"></i> petition.docx</td>
+                                            <td>CV/2024/002</td>
+                                            <td>Petition</td>
+                                            <td>1.2 MB</td>
+                                            <td>2024-01-14</td>
+                                            <td><span class="badge badge-success">Verified</span></td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Download"><i class="fas fa-download"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hearings Page -->
+                    <div id="page-hearings" class="content-page">
+                        <div class="page-header">
+                            <div class="page-header-content">
+                                <h1>Hearings</h1>
+                                <p>Manage case hearings and schedules.</p>
+                            </div>
+                            <button class="btn btn-primary" id="schedule-hearing-btn">
+                                <i class="fas fa-calendar-plus"></i> Schedule Hearing
+                            </button>
+                        </div>
+
+                        <!-- Calendar View -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Hearings Calendar</h3>
+                                <div class="calendar-nav">
+                                    <button class="btn btn-outline btn-sm"><i class="fas fa-chevron-left"></i></button>
+                                    <span>January 2024</span>
+                                    <button class="btn btn-outline btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="calendar-grid">
+                                    <div class="calendar-day-header">Sun</div>
+                                    <div class="calendar-day-header">Mon</div>
+                                    <div class="calendar-day-header">Tue</div>
+                                    <div class="calendar-day-header">Wed</div>
+                                    <div class="calendar-day-header">Thu</div>
+                                    <div class="calendar-day-header">Fri</div>
+                                    <div class="calendar-day-header">Sat</div>
+                                    <div class="calendar-day">31</div>
+                                    <div class="calendar-day">1</div>
+                                    <div class="calendar-day">2</div>
+                                    <div class="calendar-day">3</div>
+                                    <div class="calendar-day">4</div>
+                                    <div class="calendar-day">5</div>
+                                    <div class="calendar-day">6</div>
+                                    <div class="calendar-day">7</div>
+                                    <div class="calendar-day">8</div>
+                                    <div class="calendar-day">9</div>
+                                    <div class="calendar-day">10</div>
+                                    <div class="calendar-day">11</div>
+                                    <div class="calendar-day">12</div>
+                                    <div class="calendar-day">13</div>
+                                    <div class="calendar-day">14</div>
+                                    <div class="calendar-day">15</div>
+                                    <div class="calendar-day">16</div>
+                                    <div class="calendar-day">17</div>
+                                    <div class="calendar-day">18</div>
+                                    <div class="calendar-day">19</div>
+                                    <div class="calendar-day">20</div>
+                                    <div class="calendar-day">21</div>
+                                    <div class="calendar-day">22</div>
+                                    <div class="calendar-day">23</div>
+                                    <div class="calendar-day">24</div>
+                                    <div class="calendar-day">25</div>
+                                    <div class="calendar-day">26</div>
+                                    <div class="calendar-day">27</div>
+                                    <div class="calendar-day">28</div>
+                                    <div class="calendar-day">29</div>
+                                    <div class="calendar-day">30</div>
+                                    <div class="calendar-day">31</div>
+                                    <div class="calendar-day">1</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Hearings -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Upcoming Hearings</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Case No.</th>
+                                            <th>Date & Time</th>
+                                            <th>Court</th>
+                                            <th>Judge</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="hearings-table">
+                                        <tr>
+                                            <td>CV/2024/001</td>
+                                            <td>2024-01-20 10:00 AM</td>
+                                            <td>Court A</td>
+                                            <td>Judge Williams</td>
+                                            <td><span class="badge badge-primary">Scheduled</span></td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CR/2024/003</td>
+                                            <td>2024-01-20 02:00 PM</td>
+                                            <td>Court B</td>
+                                            <td>Judge Miller</td>
+                                            <td><span class="badge badge-primary">Scheduled</span></td>
+                                            <td>
+                                                <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Scheduling Page -->
+                    <div id="page-scheduling" class="content-page">
+                        <div class="page-header">
+                            <h1>Smart Scheduling</h1>
+                            <p>AI-powered case scheduling and workload optimization.</p>
+                        </div>
+
+                        <!-- Scheduling Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon stat-blue">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Scheduled Today</h3>
+                                    <p class="stat-value">12</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-green">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Completed</h3>
+                                    <p class="stat-value">8</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-orange">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>In Progress</h3>
+                                    <p class="stat-value">4</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon stat-purple">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>AI Optimized</h3>
+                                    <p class="stat-value">95%</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule Queue -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Today's Schedule</h3>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-magic"></i> Auto-Schedule
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="schedule-timeline">
+                                    <div class="schedule-item completed">
+                                        <div class="schedule-time">09:00 AM</div>
+                                        <div class="schedule-content">
+                                            <h4>CV/2024/001 - Smith vs. Johnson</h4>
+                                            <p>Court A - Judge Williams</p>
+                                            <span class="badge badge-success">Completed</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-item in-progress">
+                                        <div class="schedule-time">10:00 AM</div>
+                                        <div class="schedule-content">
+                                            <h4>CV/2024/002 - Williams vs. Davis</h4>
+                                            <p>Court A - Judge Williams</p>
+                                            <span class="badge badge-primary">In Progress</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-item pending">
+                                        <div class="schedule-time">11:00 AM</div>
+                                        <div class="schedule-content">
+                                            <h4>CR/2024/003 - State vs. Brown</h4>
+                                            <p>Court B - Judge Miller</p>
+                                            <span class="badge badge-warning">Pending</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-item pending">
+                                        <div class="schedule-time">02:00 PM</div>
+                                        <div class="schedule-content">
+                                            <h4>CV/2024/004 - Anderson vs. Taylor</h4>
+                                            <p>Court A - Judge Williams</p>
+                                            <span class="badge badge-secondary">Scheduled</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Priority Scheduling Page -->
+                    <div id="page-priority-scheduling" class="content-page admin-only-page">
+                        <div class="page-header">
+                            <h1>Priority Scheduling</h1>
+                            <p>Manage high-priority and urgent case scheduling.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Priority Cases Queue</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Priority</th>
+                                            <th>Case No.</th>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Days Pending</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="badge badge-danger">Critical</span></td>
+                                            <td>CR/2024/003</td>
+                                            <td>State vs. Brown</td>
+                                            <td>Criminal</td>
+                                            <td>5</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Schedule</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge badge-warning">High</span></td>
+                                            <td>CV/2024/001</td>
+                                            <td>Smith vs. Johnson</td>
+                                            <td>Civil</td>
+                                            <td>3</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Schedule</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports Page -->
+                    <div id="page-reports" class="content-page admin-only-page">
+                        <div class="page-header">
+                            <h1>Reports</h1>
+                            <p>Generate and view case management reports.</p>
+                        </div>
+
+                        <!-- Report Types -->
+                        <div class="report-grid">
+                            <div class="report-card">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Case Statistics</h3>
+                                <p>Overview of case volumes and trends.</p>
+                                <button class="btn btn-outline">Generate</button>
+                            </div>
+                            <div class="report-card">
+                                <i class="fas fa-clock"></i>
+                                <h3>Case Duration</h3>
+                                <p>Average case processing time.</p>
+                                <button class="btn btn-outline">Generate</button>
+                            </div>
+                            <div class="report-card">
+                                <i class="fas fa-gavel"></i>
+                                <h3>Judge Performance</h3>
+                                <p>Judge workload and case clearance rates.</p>
+                                <button class="btn btn-outline">Generate</button>
+                            </div>
+                            <div class="report-card">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Hearings Summary</h3>
+                                <p>Hearings scheduled and completed.</p>
+                                <button class="btn btn-outline">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Users Page -->
+                    <div id="page-users" class="content-page admin-only-page">
+                        <div class="page-header">
+                            <div class="page-header-content">
+                                <h1>Users</h1>
+                                <p>Manage system users and permissions.</p>
+                            </div>
+                            <button class="btn btn-primary" id="add-user-btn">
+                                <i class="fas fa-user-plus"></i> Add User
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Created</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="users-table">
+                                        <tr>
+                                            <td>
+                                                <div class="user-cell">
+                                                    <div class="user-avatar-sm">A</div>
+                                                    <span>Admin User</span>
+                                                </div>
+                                            </td>
+                                            <td>admin@justiflow.com</td>
+                                            <td><span class="badge badge-primary">ADMIN</span></td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>2024-01-01</td>
+                                            <td>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="user-cell">
+                                                    <div class="user-avatar-sm">J</div>
+                                                    <span>Judge Williams</span>
+                                                </div>
+                                            </td>
+                                            <td>judge@justiflow.com</td>
+                                            <td><span class="badge badge-secondary">JUDGE</span></td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>2024-01-02</td>
+                                            <td>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Page -->
+                    <div id="page-settings" class="content-page">
+                        <div class="page-header">
+                            <h1>Settings</h1>
+                            <p>Configure system preferences and account settings.</p>
+                        </div>
+
+                        <div class="settings-grid">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Profile Settings</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form id="profile-form">
+                                        <div class="form-group">
+                                            <label class="form-label">Full Name</label>
+                                            <input type="text" class="form-input" value="Admin User">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-input" value="admin@justiflow.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Phone</label>
+                                            <input type="tel" class="form-input" value="+1 234 567 8900">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Notification Preferences</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4>Email Notifications</h4>
+                                            <p>Receive case updates via email</p>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4>SMS Alerts</h4>
+                                            <p>Receive urgent case alerts via SMS</p>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4>Browser Notifications</h4>
+                                            <p>Show desktop notifications</p>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Security</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form id="password-form">
+                                        <div class="form-group">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-input" placeholder="Enter current password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">New Password</label>
+                                            <input type="password" class="form-input" placeholder="Enter new password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-input" placeholder="Confirm new password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>System Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="system-info">
+                                        <div class="info-item">
+                                            <span class="info-label">Version</span>
+                                            <span class="info-value">1.0.0</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Environment</span>
+                                            <span class="info-value">Production</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Last Updated</span>
+                                            <span class="info-value">2024-01-15</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Modal Container -->
+        <div id="modal-container" class="modal-container hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal Title</h3>
+                    <button class="modal-close" id="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-footer" id="modal-footer">
+                    <button class="btn btn-outline" id="modal-cancel">Cancel</button>
+                    <button class="btn btn-primary" id="modal-confirm">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toast-container" class="toast-container"></div>
+
+        <!-- AI Assistant Widget -->
+        <div id="ai-assistant-widget" class="ai-assistant-widget">
+            <button id="ai-assistant-toggle" class="ai-assistant-toggle">
+                <i class="fas fa-robot"></i>
+            </button>
+        </div>
+
+        <!-- AI Assistant Chat Panel -->
+        <div id="ai-chat-panel" class="ai-chat-panel hidden">
+            <div class="ai-chat-header">
+                <div class="ai-chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>LegalAI Assistant</span>
+                </div>
+                <button id="ai-chat-close" class="ai-chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-chat-subheader">
+                <div class="ai-mode-selector">
+                    <button class="ai-mode-btn active" data-mode="case-summary">Summarize</button>
+                    <button class="ai-mode-btn" data-mode="workflow">Workflow</button>
+                    <button class="ai-mode-btn" data-mode="rag">RAG</button>
+                    <button class="ai-mode-btn" data-mode="explain">Explain ML</button>
+                </div>
+            </div>
+            <div id="ai-chat-messages" class="ai-chat-messages">
+                <div class="ai-message ai-message-bot">
+                    <div class="ai-message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-message-content">
+                        <p>Hello! I'm your LegalAI Assistant. I can help you with:</p>
+                        <ul>
+                            <li><strong>Summarize</strong> - Summarize legal cases and documents</li>
+                            <li><strong>Workflow</strong> - Explain judicial workflows</li>
+                            <li><strong>RAG</strong> - Provide context-aware legal responses</li>
+                            <li><strong>Explain ML</strong> - Explain AI/ML decision rationale</li>
+                        </ul>
+                        <p>Select a mode above and ask your question!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-chat-input-area">
+                <div class="ai-quick-actions">
+                    <button class="ai-quick-btn" data-prompt="Summarize case CV/2024/001">Summarize Case</button>
+                    <button class="ai-quick-btn" data-prompt="Explain the hearing workflow">Hearing Workflow</button>
+                    <button class="ai-quick-btn" data-prompt="What factors determine case priority?">Priority Factors</button>
+                </div>
+                <div class="ai-input-row">
+                    <input type="text" id="ai-chat-input" class="ai-chat-input" placeholder="Ask a legal question...">
+                    <button id="ai-chat-send" class="ai-chat-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <div class="ai-footer-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>AI responses are for assistance only. Verify with legal authority.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
